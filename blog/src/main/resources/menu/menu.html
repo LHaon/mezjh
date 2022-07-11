@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  
+  <head>
+    <script type="text/javascript">
+      function copyText() {
+        var text = document.getElementById("menuText").innerText;
+        document.getElementById("input").style.display = "block";
+        var input = document.getElementById("input");
+        input.value = text; // 修改文本框的内容
+        input.select(); // 选中文本
+        document.execCommand("copy"); // 执行浏览器复制命令
+        yin();
+      }
+      function yin() {
+        document.getElementById("input").style.display = "none";
+      }
+      function refresh() {
+        window.location.reload();
+      }
+    </script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="Error page 404, page not found design, wrong url">
+    <meta name="author" content="Ashishmaraviya">
+    <link rel="icon" th:href="@{/menu/images/favicon.png}" type="image/x-icon" />
+    <link rel="shortcut icon" th:href="@{/menu/images/favicon.png}" type="image/x-icon" />
+    <title>欢迎使用今天中午吃什么</title>
+    <!--Google font-->
+    <!-- Bootstrap css -->
+    <link rel="stylesheet" type="text/css" th:href="@{/menu/css/bootstrap.css}">
+    <!-- Theme css -->
+    <link rel="stylesheet" type="text/css" th:href="@{/menu/css/error-page.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/menu/css/error-page-responsive.css}"></head>
+  
+  <body onload="copyText()">
+    <!-- 01 Preloader -->
+    <div class="loader-wrapper" id="loader-wrapper">
+      <div class="loader"></div>
+    </div>
+    <!-- Preloader end -->
+    <!-- 02 Main page -->
+    <section class="page-section">
+      <div class="full-width-screen">
+        <div class="container-fluid p-0">
+          <div class="particles-bg" id="particles-js">
+            <div class="content-detail">
+              <p class="detail-text">今天中午吃什么？</br>
+                </br>
+                <span id="menuText" th:text="${result}"> </span>
+                <br th:text="${allPrice}">
+              </p>
+              <button onclick="copyText()" class="back-btn">
+                复制
+            </button>
+              <button onclick="refresh()" class="back-btn">刷新</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <textarea id="input" style="display: none"></textarea>
+    <!-- latest jquery-->
+    <script th:src="@{/menu/js/jquery-3.5.1.min.js}"></script>
+    <!-- theme particles script -->
+    <script th:src="@{/menu/js/particles.min.js}"></script>
+    <script th:src="@{/menu/js/app.js}"></script>
+    <!-- Theme js-->
+    <script th:src="@{/menu/js/script.js}"></script>
+    <script>
+    </script>
+  </body>
+
+</html>
